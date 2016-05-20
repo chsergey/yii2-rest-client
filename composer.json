@@ -1,0 +1,28 @@
+{
+    "name": "chsergey/yii2-rest-client",
+    "version": "0.1.0",
+    "description": "REST client (AR-like model) for Yii Framework 2.0 (via GuzzleHttp)",
+    "keywords": ["yii2", "rest", "client", "model"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chsergey",
+            "email": "chsergey@chsergey.ru"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/chsergey/yii2-rest-client",
+        "issues": "https://github.com/chsergey/yii2-rest-client/issues"
+    },
+    "minimum-stability": "beta",
+    "require": {
+        "php": ">=5.5.0",
+        "yiisoft/yii2": ">=2.0.5",
+        "guzzlehttp/guzzle": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "chsergey\\rest": "src/"
+        }
+    }
+}
