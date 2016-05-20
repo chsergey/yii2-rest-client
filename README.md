@@ -2,6 +2,8 @@ REST Client for Yii 2 (ActiveRecord-like model)
 ===============================================
 This extension provides an interface to work with RESTful API via ActiveRecord-like model in Yii 2.
 
+For HTTP requests thanks to [GuzzleHttp](https://packagist.org/packages/guzzlehttp/guzzle)
+
 Installation
 ------------
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
