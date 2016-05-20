@@ -2,7 +2,7 @@
     "name": "chsergey/yii2-rest-client",
     "version": "0.1.0",
     "description": "REST client (AR-like model) for Yii Framework 2.0 (via GuzzleHttp)",
-    "keywords": ["yii2", "rest", "client", "model"],
+    "keywords": ["yii2", "rest", "client", "model", "active record"],
     "license": "MIT",
     "authors": [
         {
