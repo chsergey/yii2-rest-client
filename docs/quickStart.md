@@ -1,3 +1,5 @@
+## Quick Start
+
 Create you own model by extending abstract class chsergey\rest\Model and configure it with API URL and resource name:
 
 ```php
