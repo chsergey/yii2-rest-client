@@ -7,7 +7,7 @@ use yii\data\BaseDataProvider;
 
 /**
  * Class DataProvider
- * 
+ *
  * @package chsergey\rest
  */
 class DataProvider extends BaseDataProvider {
@@ -26,7 +26,7 @@ class DataProvider extends BaseDataProvider {
 		if(!$this->query instanceof QueryInterface) {
 			throw new InvalidConfigException(
 				'The "query" property must be an instance of a class that implements the '.
-				'app\components\rest\QueryInterface or its subclasses.'
+				'chsergey\rest\QueryInterface or its subclasses.'
 			);
 		}
 

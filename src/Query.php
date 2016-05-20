@@ -49,7 +49,7 @@ class Query extends Component implements QueryInterface {
 	 */
 	public $unserializers = [
 		self::JSON_TYPE => [
-			'class' => 'app\components\rest\JsonUnserializer'
+			'class' => 'chsergey\rest\JsonUnserializer'
 		]
 	];
 	/**
@@ -69,31 +69,31 @@ class Query extends Component implements QueryInterface {
 	public $selectFieldsKey = 'fields';
 	/**
 	 * Request LIMIT param name
-	 * @see \app\components\rest\Model::$limitKey
+	 * @see chsergey\rest\Model::$limitKey
 	 * @var string
 	 */
 	public $limitKey;
 	/**
 	 * Request OFFSET param name
-	 * @see \app\components\rest\Model::$offsetKey
+	 * @see chsergey\rest\Model::$offsetKey
 	 * @var string
 	 */
 	public $offsetKey;
 	/**
 	 * Model class envelope
-	 * @see \app\components\rest\Model::$collectionEnvelope
+	 * @see chsergey\rest\Model::$collectionEnvelope
 	 * @var string
 	 */
 	private $_collectionEnvelope;
 	/**
 	 * Model class pagination envelope
-	 * @see \app\components\rest\Model::$paginationEnvelope
+	 * @see chsergey\rest\Model::$paginationEnvelope
 	 * @var string
 	 */
 	private $_paginationEnvelope;
 	/**
 	 * Model class pagination envelope keys mapping
-	 * @see \app\components\rest\Model::$paginationEnvelopeKeys
+	 * @see chsergey\rest\Model::$paginationEnvelopeKeys
 	 * @var array
 	 */
 	private $_paginationEnvelopeKeys;
