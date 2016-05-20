@@ -31,7 +31,7 @@ class Employee extends Model
 
 Use your model as usual AR-like model.
 
-### Work with single resource
+### Working with single resource
 
 ```php
 $employee = Employee:findOne('employee1');
@@ -57,7 +57,7 @@ $employee->setScenario(Model::SCENARIO_UPDATE); // PUT-request to update
 $employee->save();
 ```
 
-### Work with collection
+### Working with collection
 To get collection:
 ```php
 $employees = Employee::find()->where(['age' => 30])->all();
