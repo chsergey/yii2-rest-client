@@ -7,7 +7,7 @@ namespace app\models;
 
 use chsergey\rest\Model;
 
-class Employee extends Model implements Linkable
+class Employee extends Model
 {
 	/**
 	 * RESTful API URL
