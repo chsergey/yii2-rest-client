@@ -7,6 +7,8 @@ This extension provides an interface to work with RESTful API via ActiveRecord-l
 
 For HTTP requests thanks to [GuzzleHttp](https://packagist.org/packages/guzzlehttp/guzzle)
 
+### Welcome to PR
+
 Installation
 ------------
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
