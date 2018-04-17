@@ -301,7 +301,7 @@ class Query extends Component implements QueryInterface {
 	 * @return ResponseInterface
 	 * @throws ServerErrorHttpException
 	 */
-	private function _request($method, $url, array $options) {
+	protected function _request($method, $url, array $options) {
 		try {
 			$response = $this->httpClient->{$method}($url, $options);
 		} catch(ClientException $e) {
@@ -333,7 +333,7 @@ class Query extends Component implements QueryInterface {
 	 * @return $this|Model|array|void
 	 * @throws HttpException
 	 */
-	private function _populate(ResponseInterface $response, $asCollection = true) {
+	protected function _populate(ResponseInterface $response, $asCollection = true) {
 		$models = [];
 		$statusCode = $response->getStatusCode();
 		$data = $this->_unserializeResponseBody($response);
