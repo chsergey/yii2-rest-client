@@ -81,6 +81,13 @@ interface ModelInterface {
 	public static function getResourceName();
 
 	/**
+	 * set custom request headers in each model
+	 * e.g. ['Authorisation' => 'JWT sashgghdsKeyfoobarbit3hes']
+	 * @return array
+	 */
+	public static function getRequestHeaders();
+
+	/**
 	 * Create new instance of class
 	 * @return Model
 	 */

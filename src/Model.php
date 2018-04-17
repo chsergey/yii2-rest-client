@@ -106,6 +106,11 @@ abstract class Model extends \yii\base\Model implements ModelInterface {
 		return static::$resourceName;
 	}
 
+	public static function getRequestHeaders()
+	{
+		return [];
+	}
+
 	/**
 	 * @inheritdoc
 	 * @throws \yii\base\InvalidConfigException
@@ -176,7 +181,7 @@ abstract class Model extends \yii\base\Model implements ModelInterface {
 	/**
 	 * @inheritdoc
 	 */
-	public function getAttributes() {
+	public function getAttributes($names = null, $except = array()) {
 
 		return $this->_attributes;
 	}
@@ -184,11 +189,11 @@ abstract class Model extends \yii\base\Model implements ModelInterface {
 	/**
 	 * @inheritdoc
 	 */
-	public function setAttributes(array $attributes, $useForce = false) {
-		if($useForce) {
-			$this->_attributes = $attributes;
+	public function setAttributes($values, $safeOnly=true) {
+		if($safeOnly) {
+			$this->_attributes = $values;
 		} else {
-			foreach($attributes as $key => $val) {
+			foreach($values as $key => $val) {
 				$this->_attributes[$key] = $val;
 			}
 		}
