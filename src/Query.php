@@ -146,11 +146,16 @@ class Query extends Component implements QueryInterface {
 		$this->offsetKey = $modelClass::$offsetKey;
 		$this->limitKey = $modelClass::$limitKey;
 
+		$headers = array_merge(
+			$this->_getRequestHeaders(),
+			$modelClass::getRequestHeaders()
+		);
+
 		$this->httpClient = new Client([
 			/* @link http://docs.guzzlephp.org/en/latest/quickstart.html */
 			'base_uri' => $this->_getUrl('api'),
 			/* @link http://docs.guzzlephp.org/en/latest/request-options.html#headers */
-			'headers' => $this->_getRequestHeaders(),
+			'headers' => $headers,
 		]);
 
 		parent::__construct($config);

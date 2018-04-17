@@ -16,6 +16,8 @@ class Employee extends Model
 	 * @var string
 	 */
 	public static $apiUrl = 'http://server/rest/v1/';
+	public static $apiKey = 'top-secret-api-key-123456';
+
 	/**
 	 * Name of resources collection
 	 * @var string
@@ -26,6 +28,16 @@ class Employee extends Model
 	 * @var string
 	 */
 	public static $primaryKey = 'login';
+
+	/**
+	 * define custom headers
+	 */
+	public static function getRequestHeaders()
+	{
+		return [
+			'Authorization' => static::$apiKey,
+		];
+	}
 }
 ```
 
