@@ -248,8 +248,15 @@ class Query extends Component implements QueryInterface {
 	 */
 	public function update(Model $model) {
 
+		$modelClass = $this->modelClass;
+
+		$url = 	$this->_getUrl(
+			'element',
+			$model->getAttribute($modelClass::primaryKey()[0])
+		);
+
 		return $this->_populate(
-			$this->_request('put', $this->_getUrl('element', $model->getPrimaryKey()), [
+			$this->_request('put', $url, [
 				'json' => $model->getAttributes()
 			]),
 			false
