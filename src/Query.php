@@ -58,6 +58,11 @@ class Query extends Component implements QueryInterface {
 	 */
 	public $httpClient;
 	/**
+	 * Configuration to be supplied to the HTTP client
+	 * @var array
+	 */
+	public $httpClientExtraConfig = [];
+	/**
 	 * Model class
 	 * @var Model
 	 */
@@ -146,12 +151,16 @@ class Query extends Component implements QueryInterface {
 		$this->offsetKey = $modelClass::$offsetKey;
 		$this->limitKey = $modelClass::$limitKey;
 
-		$this->httpClient = new Client([
-			/* @link http://docs.guzzlephp.org/en/latest/quickstart.html */
-			'base_uri' => $this->_getUrl('api'),
-			/* @link http://docs.guzzlephp.org/en/latest/request-options.html#headers */
-			'headers' => $this->_getRequestHeaders(),
-		]);
+		$httpClientConfig = array_merge(
+			[
+				/* @link http://docs.guzzlephp.org/en/latest/quickstart.html */
+				'base_uri' => $this->_getUrl('api'),
+				/* @link http://docs.guzzlephp.org/en/latest/request-options.html#headers */
+				'headers' => $this->_getRequestHeaders(),
+			],
+			$this->httpClientExtraConfig
+		);
+		$this->httpClient = new Client($httpClientConfig);
 
 		parent::__construct($config);
 	}
