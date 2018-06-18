@@ -22,7 +22,7 @@ php composer.phar require --prefer-dist chsergey/yii2-rest-client:0.1.0
 or add
 
 ```json
-"chsergey/yii2-rest-client": "0.1.0"
+"chsergey/yii2-rest-client": "0.1.1"
 ```
 
 to the `require` section of your composer.json.
