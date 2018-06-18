@@ -14,10 +14,10 @@ use yii\web\HttpException;
 use yii\web\ServerErrorHttpException;
 
 /**
- * Class Query 
+ * Class Query
  * HTTP transport by GuzzleHTTP
- * 
- * @package chsergey\rest 
+ *
+ * @package chsergey\rest
  */
 class Query extends Component implements QueryInterface {
 	/**
@@ -58,6 +58,11 @@ class Query extends Component implements QueryInterface {
 	 */
 	public $httpClient;
 	/**
+	 * Configuration to be supplied to the HTTP client
+	 * @var array
+	 */
+	public $httpClientExtraConfig = [];
+	/**
 	 * Model class
 	 * @var Model
 	 */
@@ -84,13 +89,13 @@ class Query extends Component implements QueryInterface {
 	 * @see chsergey\rest\Model::$collectionEnvelope
 	 * @var string
 	 */
-	private $_collectionEnvelope;
+	protected $_collectionEnvelope;
 	/**
 	 * Model class pagination envelope
 	 * @see chsergey\rest\Model::$paginationEnvelope
 	 * @var string
 	 */
-	private $_paginationEnvelope;
+	protected $_paginationEnvelope;
 	/**
 	 * Model class pagination envelope keys mapping
 	 * @see chsergey\rest\Model::$paginationEnvelopeKeys
@@ -146,12 +151,16 @@ class Query extends Component implements QueryInterface {
 		$this->offsetKey = $modelClass::$offsetKey;
 		$this->limitKey = $modelClass::$limitKey;
 
-		$this->httpClient = new Client([
-			/* @link http://docs.guzzlephp.org/en/latest/quickstart.html */
-			'base_uri' => $this->_getUrl('api'),
-			/* @link http://docs.guzzlephp.org/en/latest/request-options.html#headers */
-			'headers' => $this->_getRequestHeaders(),
-		]);
+		$httpClientConfig = array_merge(
+			[
+				/* @link http://docs.guzzlephp.org/en/latest/quickstart.html */
+				'base_uri' => $this->_getUrl('api'),
+				/* @link http://docs.guzzlephp.org/en/latest/request-options.html#headers */
+				'headers' => $this->_getRequestHeaders(),
+			],
+			$this->httpClientExtraConfig
+		);
+		$this->httpClient = new Client($httpClientConfig);
 
 		parent::__construct($config);
 	}
@@ -328,7 +337,7 @@ class Query extends Component implements QueryInterface {
 	 * @return $this|Model|array|void
 	 * @throws HttpException
 	 */
-	private function _populate(ResponseInterface $response, $asCollection = true) {
+	protected function _populate(ResponseInterface $response, $asCollection = true) {
 		$models = [];
 		$statusCode = $response->getStatusCode();
 		$data = $this->_unserializeResponseBody($response);
@@ -376,7 +385,7 @@ class Query extends Component implements QueryInterface {
 	 * @param array $elements
 	 * @return array
 	 */
-	private function _createModels(array $elements) {
+	protected function _createModels(array $elements) {
 		$modelClass = $this->modelClass;
 		$models = [];
 		foreach ($elements as $element) {
@@ -395,7 +404,7 @@ class Query extends Component implements QueryInterface {
 	 * @return object[]|object|string
 	 * @throws \yii\base\InvalidConfigException
 	 */
-	private function _unserializeResponseBody(ResponseInterface $response) {
+	protected function _unserializeResponseBody(ResponseInterface $response) {
 
 		$body = (string) $response->getBody();
 		$contentType = $response->getHeaderLine('Content-type');
