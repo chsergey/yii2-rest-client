@@ -16,7 +16,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist chsergey/yii2-rest-client:0.1.0
+php composer.phar require --prefer-dist chsergey/yii2-rest-client:0.1.1
 ```
 
 or add
