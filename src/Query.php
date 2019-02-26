@@ -143,7 +143,10 @@ class Query extends Component implements QueryInterface {
 	 * @param array $config
 	 */
 	public function __construct($modelClass, $config = []) {
-		$modelClass::staticInit();
+		
+                parent::__construct($config);
+                $modelClass::staticInit();
+                
 		$this->modelClass = $modelClass;
 		$this->_collectionEnvelope = $modelClass::$collectionEnvelope;
 		$this->_paginationEnvelope = $modelClass::$paginationEnvelope;
@@ -161,8 +164,6 @@ class Query extends Component implements QueryInterface {
 			$this->httpClientExtraConfig
 		);
 		$this->httpClient = new Client($httpClientConfig);
-
-		parent::__construct($config);
 	}
 
 	/**

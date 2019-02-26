@@ -176,7 +176,7 @@ abstract class Model extends \yii\base\Model implements ModelInterface {
 	/**
 	 * @inheritdoc
 	 */
-	public function getAttributes() {
+	public function getAttributes($names = NULL, $except = []) {
 
 		return $this->_attributes;
 	}
@@ -184,15 +184,11 @@ abstract class Model extends \yii\base\Model implements ModelInterface {
 	/**
 	 * @inheritdoc
 	 */
-	public function setAttributes(array $attributes, $useForce = false) {
-		if($useForce) {
-			$this->_attributes = $attributes;
-		} else {
-			foreach($attributes as $key => $val) {
-				$this->_attributes[$key] = $val;
-			}
-		}
+	public function setAttributes($values, $safeOnly = true) {
 
+                foreach($values as $key => $val)
+                    $this->_attributes[$key] = $val;
+                    
 		return $this;
 	}
 
